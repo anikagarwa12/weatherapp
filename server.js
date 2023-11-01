@@ -1,16 +1,15 @@
 const express = require("express");
-const cors = require("cors"); // Import the cors package
+const cors = require("cors"); 
 const axios = require("axios");
 require('dotenv').config();
 const app = express();
 app.use(express.json());
-app.use(cors()); // Use cors middleware
+app.use(cors()); 
 const API_KEY = process.env.API_KEY;
-// Example weather API endpoint (replace with your chosen weather API)
 const weatherAPI = "https://api.openweathermap.org/data/2.5/weather";
-//const API_KEY = "c880a88c25278f373049c63496b1fa92"; // Replace with your actual API key
 
-// POST endpoint for weather data
+
+
 app.post("/getWeather", async (req, res) => {
   const { cities } = req.body;
   if (!cities || !Array.isArray(cities)) {
@@ -33,7 +32,7 @@ app.post("/getWeather", async (req, res) => {
   }
 });
 
-// Route for the root URL
+
 app.get("/", (req, res) => {
   res.send("Server is running. Use /getWeather endpoint to get weather data.");
 });
